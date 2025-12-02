@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online MCQ Test Platform</title>
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    
+    <div id="start-screen" class="card p-4 mt-5">
+      <h2 class="mb-2">Online MCQ Test</h2>
+      <p class="small-muted">Technologies: HTML, CSS, Bootstrap 5, JavaScript (client-side only)</p>
+      <hr>
+      <p style="background: linear-gradient(to right,green,yellow);">
+        <strong>Instructions:</strong><br>
+        • 15 random questions will be selected from the question bank (50 total).<br>
+        • One question is shown at a time. Use Next / Previous to navigate.<br>
+        • Select exactly one option per question.<br>
+        • You can submit anytime. The test auto-submits when the timer ends (if enabled).
+      </p>
+
+      <div class="row mt-3">
+        <div class="col-md-6 mb-2">
+          <label for="enable-timer" class="form-label">Enable timer?</label>
+          <select id="enable-timer" class="form-select">
+            <option value="true" selected>Yes — default 20 minutes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-2">
+          <label for="time-minutes" class="form-label">Duration (minutes)</label>
+          <input id="time-minutes" type="number" class="form-control" min="1" value="20">
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <small class="text-muted">Questions: 15 | Random from pool of 50</small>
+        <button id="start-btn" class="btn btn-primary">Start Test</button>
+      </div>
+    </div>
+
+    
+    <div id="quiz-screen" class="card p-4 mt-5 d-none">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <h5 id="q-number">Q1 of 15</h5>
+          <div id="question-text" class="mb-3 lead"></div>
+        </div>
+        <div class="text-end">
+          <div class="timer mb-1" id="timer-display">--:--</div>
+          <small class="small-muted">Time Remaining</small>
+        </div>
+      </div>
+
+      <form id="options-form" aria-label="Options">
+        <div id="options-container" class="list-group mb-3"></div>
+      </form>
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <button id="prev-btn" class="btn btn-outline-secondary me-2">Previous</button>
+          <button id="next-btn" class="btn btn-outline-secondary">Next</button>
+        </div>
+        <div>
+          <button id="submit-btn" class="btn btn-success">Submit Test</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div id="result-screen" class="card p-4 mt-5 d-none">
+      <h3>Test Results</h3>
+      <hr>
+      <p id="result-summary"></p>
+      <div id="detailed-results" class="mt-3"></div>
+      <div class="mt-4 d-flex gap-2">
+        <button id="retake-btn" class="btn btn-primary">Retake Test</button>
+        <button id="start-over-btn" class="btn btn-outline-secondary">Back to Start</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
